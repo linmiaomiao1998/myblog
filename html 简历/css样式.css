@@ -1,5 +1,5 @@
 body {
-    /*! background: black; */
+    background: black; 
     /*! color: white; */
     margin: 0;
   }
@@ -49,9 +49,6 @@ body {
 {
     border-bottom: 1px solid red;
 }
-body{
-    
-}
 .rs{
     font-size: 24px;
     font-family: "Arial Black";
@@ -74,5 +71,43 @@ body{
   .banner .mask{
     height:515px;
     background-color:rgba(0,0,0,0.7);
-    border: 1px solid  #E6686A 
+  
   }
+  .usercard{
+    border: 1px soild red;
+    max-width: 940px; 
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  .usercard .welcome
+  {
+    background-color: #E6696A;
+    color: white;
+    padding: 5px 16px;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+  }
+.usercard .welcome .triangle
+{
+  border:10px solid transparent;
+  width:0px;
+  border-left-color:#E6696A;
+  border-top-width: 0px;
+  position: absolute;
+  display: block;
+  top:100%;
+  left:4px;
+
+}
+.usercard .text
+{
+  float: left;
+}
+.usercard .picture
+{
+  float:left;
+
+}
