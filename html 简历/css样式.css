@@ -1,6 +1,5 @@
 body {
-    background: black; 
-    /*! color: white; */
+  background: black;
     margin: 0;
   }
   a {
@@ -148,6 +147,27 @@ body {
 .usercard .text hr{
   margin:20px 0px;
 }
-.usercard .footer media{
-  
+.media{
+  background: #E6686A;
+  text-align: center;
+}
+footer.media > a{
+display: inline-block;
+width:40px;
+line-height: 30px;
+padding: 5px 0;
+border: 1px solid black;
+border-radius: 50px;
+
+}
+footer.media > a:hover{
+  background: #CF5D5F;
+
+}
+
+.media svg{
+  height: 30px;
+  width: 30px;
+  fill:white;
+  vertical-align: top;
 }
