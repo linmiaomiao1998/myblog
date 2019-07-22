@@ -35,12 +35,27 @@
         {
             kbd=document.createElement('kbd');
           kbd.textContent=row[index2]
+          button=document.createElement('button')
+          button.textContent='编辑'
+          button.onclick=function(keyborad)
+          {
+              key=(keyborad.target.id)
+              x=prompt('给我一个网址')
+              hash[key]=x
+          }
+          kbd.appendChild(button)
           div1.appendChild(kbd)
         index2=index2+1;
          }
          
           index=index+1
-            }
+    }
+    document.onkeypress=function(keyborad)
+    {
+        key=keyborad['key']
+        website=hash[key]
+        location.href='http://'+website
+    }
          
             </script>
 </body>
