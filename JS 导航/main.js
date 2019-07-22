@@ -1,0 +1,17 @@
+index=0
+while(index<keys['length'])
+{
+    divXXX=doucument.createElement('div');
+    y.appendChild(divXXX)
+    row=keys[index]
+    console.log(row)
+    index2=0
+    while(index2<row.length)
+    {
+        kbd=document.createElement('kbd');
+        kbd.textContent='hi'
+        div1.appendChild(kbd);
+        index2=index2+1;
+    }
+    index=index+1
+}
