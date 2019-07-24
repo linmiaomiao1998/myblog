@@ -10,6 +10,10 @@
 <body>
     <header></header>
     <main>
+        <style>
+       
+            </style>
+        
         <div class="wrapper" id="main"></div>
     </main>
         <footer></footer>
@@ -21,30 +25,45 @@
                 length:3
             }
             var hash={
-                q:'qq.com',
+                q:'www.qq.com',
                 w:'weibo.com',
                 r:'renren.com'
             }
+            var hashInLocalStorage=JSON.parse(localStorage.getItem('zzz')||'null')//取出localStoragez中的zzz对应的hash
+            if(hashInLocalStorage){
+                hash=hashInLocalStorage
+            }
             index=0
             while(index<keys.length){
-                div1=document.createElement('div')
+                div1=document.createElement('div')//遍历keys生产div
+                div1.className='row'
           main.appendChild(div1)
-          row=keys[index]
+          row=keys[index]//第一个数组 第二个数组 第三个数组 
           index2=0
-          while(index2<row.length)
+          while(index2<row.length)//0~9 0~8 0~6
         {
             kbd=document.createElement('kbd');
-          kbd.textContent=row[index2]
+            span=document.createElement('span')
+          span.textContent=row[index2]
+          kbd.appendChild(span)
+          kbd.className='key'
           button=document.createElement('button')
           button.textContent='编辑'
-          button.onclick=function(keyborad)
+          button.id=row[index2]
+          img=document.createElement('img')
+          img.src='http://'+hash[row[index2]]+'/favicon.ico'
+          button.onclick=function(keyborad)//keyborad.target是用户点击的元素
           {
-              key=(keyborad.target.id)
+              key=(keyborad.target.id)//q w e r t
               x=prompt('给我一个网址')
-              hash[key]=x
+              hash[key]=x//hash 变更
+              localStorage.setItem('zzz',JSON.stringify(hash))//只要哈希有变更，就把哈希存到change里
           }
+          
+          kbd.appendChild(img)
           kbd.appendChild(button)
           div1.appendChild(kbd)
+       
         index2=index2+1;
          }
          
@@ -54,7 +73,8 @@
     {
         key=keyborad['key']
         website=hash[key]
-        location.href='http://'+website
+        //location.href='http://'+website
+        window.open('http://'+website,'_blank')
     }
          
             </script>
