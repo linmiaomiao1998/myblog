@@ -21,6 +21,20 @@ eraser.onclick=function()
     pen.classList.remove('active')
 }
 
+clear.onclick=function()
+{
+    context.clearRect(0,0,yyy.width,yyy.height);
+}
+download.onclick=function()
+{
+    var url=yyy.toDataURL("image/png")
+    var a =document.createElement('a')
+    document.body.appendChild(a)
+    a.href=url
+    a.download="我的作品"
+    a.target='_blank'
+    a.click()
+}
 red.onclick=function()
 {
     context.strokeStyle='red'//描边
