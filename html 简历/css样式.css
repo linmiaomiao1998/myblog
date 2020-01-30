@@ -63,7 +63,7 @@ body {
     display: block;
     position: relative;
 }
-.topNavBar nav ul li a:hover::after
+.topNavBar nav ul li.active a::after
 {
     content: " ";
     display: block;
@@ -87,14 +87,27 @@ body {
 {
   display: none;
   position: absolute;
-  left: 0;
+  right:0;
   top:100%;
+  background: white;
+  color: #3d4451;
+
 }
-.topNavBar .submenu.active{
+.topNavBar li.active> .submenu{
   display: block;
+  animation:submenuSlide 0.3s;
 }
-.topNavBar .submenu li{
-  white-space:nowrap
+@keyframes submenuSlide{
+  0%{
+    margin-right: 100%;
+  }
+  100%{
+    margin-right: 0;
+  }
+}
+.topNavBar .submenu>li{
+  white-space:nowrap;
+  padding:5px 10px
 }
 .rs{
     font-size: 24px;
