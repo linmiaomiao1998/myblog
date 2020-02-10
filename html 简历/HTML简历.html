@@ -66,7 +66,7 @@
                 <div class="mask">   </div>
             </div>
         <main style="margin-top:-300px;">
-            <div id="siteAbout" class="usercard">
+            <div data-x id="siteAbout" class="usercard">
                             <div class="pictureandtext clearfix" >
                                 <div class="picture">
                                     <img src="./img/photo.jpg" width="299px" height="347px" alt="头像" >
@@ -121,7 +121,7 @@
                         自我介绍
                     </p>
         </main>
-                <section id="siteSkills" class="skill">
+                <section data-x id="siteSkills" class="skill">
                     <h2>技能</h2>
                     <ol class="clearfix">
                     <li>
@@ -163,7 +163,7 @@
                      </li>
                     </ol>
                   </section>
-                  <section class="portfolio" id="siteWorks">
+                  <section data-x class="portfolio" id="siteWorks">
                         <h2>作品集</h2>
                     <nav>
                       <ol class="clearfix">
@@ -214,15 +214,22 @@
                 topNavBar.classList.remove('sticky')
             }
         }
-       let liTags=document.querySelectorAll('nav.menu>ul>li')
-       for(let i=0;i<liTags.length;i++){
-        liTags[i].onmouseenter=function(x){
-             x.currentTarget.classList.add('active')
-           }
-           liTags[i].onmouseleave=function(x){
-             x.currentTarget.classList.remove('active')
-           }
-       }
+        let specialTags=document.querySelectorAll('[data-x]')
+        let minIndex=0
+        for(let i=1;i<specialTags.length;i++)
+        {
+            if(Math.abs(specialTags[i].offsetTop-window.scrollY) < Math.abs(specialTags[minIndex].offsetTop-window.scrollY))
+            { minIndex=i
+            }
+        }
+        for(let i=0;i<specialTags.length;i++)
+        {
+            specialTags[i].classList.remove('active')
+        }
+        specialTags[minIndex].classList.add('active')
+        let id=specialTags[minIndex].id
+        console.log(id)
+       
        let aTags =document.querySelectorAll('nav.menu>ul>li>a')
        for (let i=0;i<aTags.length;i++)
        {
@@ -233,8 +240,24 @@
                let element=document.querySelector(href)///根据href得到指定元素 eg：根据siteAbout得到关于元素块的位置
                let top=element.offsetTop  ///top获得元素到页面顶端的距离
                window.scrollTo(0,top-80) ///移动到x方向移动0像素，y方向距离顶端80px的位置
+               let n=20 
+               let t=500/n
+               let currentTop=window.scrollY
+               let target=top-80
+               let S=Math.abs(target-currentTop)
+               let s=S/n
+               let i=0
+               let id=setInterval(()=>{
+                   if(i===n){
+                       window.clearInterval(id)
+                       return
+                   }
+                   i=i+1
+                   window.scrollTo(0,currentTop + s * i)
+               },t)
       }
-       }
+    }
+
     </script>
     </body>
 </html>
