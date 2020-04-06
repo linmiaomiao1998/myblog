@@ -9,6 +9,7 @@ module.exports = {
         path: path.join(__dirname, "../public"),
         filename: "js/index.js"
     },
+
 //     module: {
 //         rules: [{
 //             test: /\.less$/,
