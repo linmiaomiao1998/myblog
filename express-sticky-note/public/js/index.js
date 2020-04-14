@@ -73,9 +73,19 @@ console.log(obj)
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var a =__webpack_require__(2).a
+module.exports={
+    b:'bbb',
+    a:a
+}
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: C:\\Users\\Administrator\\Desktop\\blog\\express-sticky-note\\src\\js\\mod\\b.js Shorthand property assignments are valid only in destructuring patterns (4:5)\nYou may need an appropriate loader to handle this file type.\n| \r\n| moudule.exports={\r\n|     b='bbb',\r\n|     a:a,\r\n| }");
+mudule.exports.a='aaabbb'
 
 /***/ })
 /******/ ]);

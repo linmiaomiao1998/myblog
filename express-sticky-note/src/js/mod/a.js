@@ -1,1 +1,1 @@
-mudule.exports.a='aaa'
+mudule.exports.a='aaabbb'
