@@ -1,0 +1,1 @@
+mudule.exports.a='aaa'
