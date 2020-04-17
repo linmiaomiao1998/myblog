@@ -1,1 +1,0 @@
-mudule.exports.a='aaabbb'
