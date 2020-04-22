@@ -1,5 +1,5 @@
 ///require('less/toast.less');
-var $ =require('../libs/jquery-2.0.3.min.js')
+var $ =require('../libs/jquery-2.0.3.min.js' )
 function toast(msg, time){
   this.msg = msg;
   this.dismissTime = time||1000;  //ms

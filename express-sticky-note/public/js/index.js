@@ -75,7 +75,7 @@ Tosat('hello world')
 /***/ (function(module, exports, __webpack_require__) {
 
 ///require('less/toast.less');
-var $ =__webpack_require__(2)
+var $ =__webpack_require__(2 )
 function toast(msg, time){
   this.msg = msg;
   this.dismissTime = time||1000;  //ms
