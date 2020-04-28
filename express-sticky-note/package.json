@@ -5,19 +5,34 @@
   "scripts": {
     "start": "node ./bin/www",
     "webpack": "webpack --config=src/webpack.config.js",
-    "watch":"onchange \"src/**/*.js\" \"src/**/*.less\" -- npm run webpack "
+    "watch": "onchange \"src/**/*.js\" \"src/**/*.less\" -- npm run webpack "
   },
   "dependencies": {
     "-": "0.0.1",
-    "autoprefixer": "^9.7.6",
+    "autoprefixer": "^6.7.7",
+    "body-parser": "^1.16.0",
     "cookie-parser": "~1.4.4",
+    "css-loader": "^0.27.3",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "express-session": "^1.15.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "http-errors": "~1.6.3",
+    "less": "^2.7.2",
+    "less-loader": "^3.0.0",
     "morgan": "~1.9.1",
     "onchange": "^6.1.0",
-    "webpack": "^3.1.0"
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-jirengu": "^1.0.0",
+    "postcss": "^2.0.0",
+    "postcss-loader": "^1.3.3",
+    "postcss-value-parser": "^4.0.3",
+    "serve-favicon": "^2.3.2",
+    "sqlite3": "^3.1.13",
+    "style-loader": "^0.14.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   }
 }
