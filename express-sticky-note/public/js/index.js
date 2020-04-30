@@ -166,7 +166,6 @@ function Toast(msg,time){
   return new toast(msg, time);
 }
 
-window.Toast=Toast;
 module.exports.Toast = Toast;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
@@ -231,59 +230,60 @@ module.exports.NoteManager = NoteManager
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {
+  
 var WaterFall = (function(){
-    var $ct;
-    var $items;
-  
-    function render($c){
-      $ct = $c;
-      $items = $ct.children();
-  
-      var nodeWidth = $items.outerWidth(true),
-        colNum = parseInt($(window).width()/nodeWidth),
-        colSumHeight = [];
-  
-      for(var i = 0; i<colNum;i++){
-        colSumHeight.push(0);
-      }
-  
-      $items.each(function(){
-        var $cur = $(this);
-  
-        //colSumHeight = [100, 250, 80, 200]
-  
-        var idx = 0,
-          minSumHeight = colSumHeight[0];
-  
-        for(var i=0;i<colSumHeight.length; i++){
-          if(colSumHeight[i] < minSumHeight){
-            idx = i;
-            minSumHeight = colSumHeight[i];
-          }
+  var $ct;
+  var $items;
+
+  function render($c){
+    $ct = $c;
+    $items = $ct.children();
+
+    var nodeWidth = $items.outerWidth(true),
+      colNum = parseInt($(window).width()/nodeWidth),
+      colSumHeight = [];
+
+    for(var i = 0; i<colNum;i++){
+      colSumHeight.push(0);
+    }
+
+    $items.each(function(){
+      var $cur = $(this);
+
+      //colSumHeight = [100, 250, 80, 200]
+
+      var idx = 0,
+        minSumHeight = colSumHeight[0];
+
+      for(var i=0;i<colSumHeight.length; i++){
+        if(colSumHeight[i] < minSumHeight){
+          idx = i;
+          minSumHeight = colSumHeight[i];
         }
-  
-        $cur.css({
-          left: nodeWidth*idx,
-          top: minSumHeight
-        });
-        colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx];
+      }
+
+      $cur.css({
+        left: nodeWidth*idx,
+        top: minSumHeight
       });
-    }
-  
-  
-    $(window).on('resize', function(){
-      render($ct);
-    })
-  
-  
-    return {
-      init: render
-    }
-  })();
-  
-  module.exports = WaterFall
-  
-  
+      colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx];
+    });
+  }
+
+
+  $(window).on('resize', function(){
+    render($ct);
+  })
+
+
+  return {
+    init: render
+  }
+})();
+
+module.exports = WaterFall
+
+
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -412,7 +412,7 @@ Note.prototype = {
       self.delete();
     })
 
-    //contenteditable 可编辑的 没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
+    //contenteditable没有 change 事件，所有这里做了模拟通过判断元素内容变动，执行 save
     $noteCt.on('focus', function() {
       if($noteCt.html()=='input here') $noteCt.html('');
       $noteCt.data('before', $noteCt.html());
