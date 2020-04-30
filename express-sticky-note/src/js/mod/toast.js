@@ -1,7 +1,5 @@
 require('less/toast.less');
 
- var $ =require('jquery' );
-
 function toast(msg, time){
   this.msg = msg;
   this.dismissTime = time||1000;  //ms
@@ -10,16 +8,16 @@ function toast(msg, time){
 }
 toast.prototype = {
   createToast: function(){
-    var tpl = '<div class="toast">'+this.msg+'</div>';///默认情况下toast是隐藏的
+    var tpl = '<div class="toast">'+this.msg+'</div>';
     this.$toast = $(tpl);
     $('body').append(this.$toast);
   },
   showToast: function(){
-    var self = this;////因为在后面的this.$toast和setTimeout中this已经改变了。为了继续找到toast元素，所以用了self
-    this.$toast.fadeIn(300, function(){////用300ms的时间去出现toast
+    var self = this;
+    this.$toast.fadeIn(300, function(){
       setTimeout(function(){
-         self.$toast.fadeOut(300,function(){///300ms后 toast消失
-           self.$toast.remove();///删除toast  
+         self.$toast.fadeOut(300,function(){
+           self.$toast.remove();
          });
       }, self.dismissTime);
     });
@@ -27,8 +25,9 @@ toast.prototype = {
   }
 };
 
-function Toast(msg,time){///单独调用的时候，会New一个toast
+function Toast(msg,time){
   return new toast(msg, time);
 }
 
+window.Toast=Toast;
 module.exports.Toast = Toast;
