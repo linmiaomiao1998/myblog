@@ -230,7 +230,6 @@ module.exports.NoteManager = NoteManager
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {
-  
 var WaterFall = (function(){
   var $ct;
   var $items;

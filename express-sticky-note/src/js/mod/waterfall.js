@@ -1,5 +1,4 @@
 
-  
 var WaterFall = (function(){
   var $ct;
   var $items;
