@@ -19,7 +19,7 @@ var Note = sequelize.define('note', {
     }
   });
 
-  ///Note.sync({force:true})///如果存在就删除，如果不存在就创建
+  //Note.sync({force:true})///如果存在就删除，如果不存在就创建
 /*
   Note.sync().then(function() { 
     Note.create({text:'hello'})
