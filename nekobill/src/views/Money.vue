@@ -2,13 +2,16 @@
 <template>
   <div>
       Money.vue
+      <Nav />
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
 
-}
+export default {
+  name:'Money',
+
+};
 </script>
 
 <style>
