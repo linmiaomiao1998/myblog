@@ -58,7 +58,7 @@ export default {
             /*text-shadow: 1px 1px white,-1px -1px #333;*/
             /*text-shadow: -1px -1px white,1px 1px #333;*/
            text-shadow: -1px 0 #A06225,1px 0#A06225,0 1px #A06225,0 -1px #A06225;
-           animation:selectedSlide 0.5s;
+           animation:selectedSlide 0.75s;
    } 
     } 
 @keyframes selectedSlide{
@@ -67,6 +67,7 @@ export default {
     }
     30%{ 
       color:wheat;
+      /* text-shadow: -1px 0 wheat,1px 0 wheat,0 1px wheat,0 -1px wheat;*/
     }
   100%{
    color:#F2DAA8;
