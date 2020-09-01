@@ -1,29 +1,23 @@
 <template>
-  <div>APP
-    <hr/>
-    <router-view/>
-    <hr/>
+  <div id="app">
+    APP
+    <hr />
+    <router-view />
+    <hr />
   </div>
 </template>
 
 <style lang="scss">
-*{
-  margin: 0;padding: 0;
-  box-sizing: border-box;
-}
-body{
+@import "~@/assets/style/reset.scss";
+@import "~@/assets/style/helper.scss";
+body {
   line-height: 1.5;
-}
-a{
-  text-decoration: none;
-  color: inherit;
+  font-family: $font-hei;
+  font-size: 16px;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
 #nav {

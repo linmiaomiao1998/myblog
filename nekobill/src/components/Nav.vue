@@ -3,17 +3,13 @@ import { RouteConfig from 'vue-router';
 <template>
       <nav>
       <router-link to="/money" class="item" active-class="selected">
-      <Icon name="money"/>
-      记账
-      </router-link>
+      <Icon name="money"/>记账</router-link>
       |
       <router-link to="/labels" class="item" active-class="selected">
-      <Icon name="label"/>
-      标签</router-link>
+      <Icon name="label"/>标签</router-link>
       |
       <router-link to="/statistics" class="item" active-class="selected">
-         <Icon name="statistics"/>
-      统计</router-link>
+         <Icon name="statistics"/>统计</router-link>
       </nav>
 </template>
 
@@ -32,7 +28,7 @@ export default {
     flex-direction: row;
     font-size: 12px;
   > .item {
-    width: 33.33333%;
+    width: 33.3333333333%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +42,7 @@ export default {
     }
    }
    > .item.selected{
-     text-align: center;
-            padding: 2px;
+            text-align: center;
             margin: 0;
             font-family: helvetica, arial, sans-serif;
             font-size: 4px;
@@ -58,17 +53,18 @@ export default {
             /*text-shadow: 1px 1px white,-1px -1px #333;*/
             /*text-shadow: -1px -1px white,1px 1px #333;*/
            text-shadow: -1px 0 #A06225,1px 0#A06225,0 1px #A06225,0 -1px #A06225;
-           animation:selectedSlide 0.75s;
+           animation:selectedSlide 0.25s;
    } 
     } 
 @keyframes selectedSlide{
   0%{
     color:#A06225;
     }
-    30%{ 
+    /*30%{ 
       color:wheat;
-      /* text-shadow: -1px 0 wheat,1px 0 wheat,0 1px wheat,0 -1px wheat;*/
-    }
+      /* text-shadow: -1px 0 wheat,1px 0 wheat,0 1px wheat,0 -1px wheat; } 
+*/
+  
   100%{
    color:#F2DAA8;
   }
