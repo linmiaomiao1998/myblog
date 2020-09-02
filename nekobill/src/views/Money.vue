@@ -24,23 +24,28 @@
           <li>收入</li>
         </ul>
       </div>
-      <div class="numberpad">
-        <div class="output">输出</div>
-        <div class="buttons">
+      <div class="numberPad">
+        <div class="output">100</div>
+        <div class="buttons clearfix">
           <button>1</button>
           <button>2</button>
           <button>3</button>
+          <button>+</button>
           <button>删除</button>
           <button>4</button>
           <button>5</button>
           <button>6</button>
+          <button>-</button>
           <button>清空</button>
           <button>7</button>
           <button>8</button>
           <button>9</button>
-          <button>ok</button>
+          <button>×</button>
+          <button class="ok">ok</button>
           <button>0</button>
           <button>.</button>
+          <button>%</button>
+          <button>÷</button>
         </div>
       </div>
     </Layout>
@@ -54,8 +59,28 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "~@/assets/style/helper.scss";
+.numberPad{
+  .output{
+    font-size: 36px;
+    font-family: Consolas,monospace;
+    padding: 9px 16px;
+    text-align: right;
+  }
+  .buttons{
+    flex-wrap: wrap;
+    > button{
+      width: 20%;
+      height:64px;
+      float: left;
+      &.ok{
+        height: 64*2px;
+        float: right;
+      }
+    }
+  }
+}
 .types {
-  background: #c4c4c4;
+  background: #fcc869;
   display: flex;
   text-align: center;
   font-size: 24px;
@@ -73,7 +98,7 @@ export default {
       left: 0;
       width: 100%;
       height: 4px;
-      background: #333333;
+      background: #BA9344;
     }
   }
 }
@@ -101,7 +126,7 @@ export default {
   > .current {
     display: flex;
     > li {
-      background: #d9d9d9;
+      background: #FAEC8B;
       $h: 24px;
       height: $h;
       line-height: $h;
@@ -110,10 +135,9 @@ export default {
       margin-right: 10px;
     }
   }
-}
-> .new {
+  > .new {
   padding-top: 16px;
-  button {
+   > button {
     background: transparent;
     border: none;
     color: #999;
@@ -121,4 +145,6 @@ export default {
     border-bottom: 1px solid;
   }
 }
+}
+
 </style>

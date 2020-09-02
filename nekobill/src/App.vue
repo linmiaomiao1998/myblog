@@ -11,15 +11,19 @@
 @import "~@/assets/style/reset.scss";
 @import "~@/assets/style/helper.scss";
 body {
+  color: #b36f1d;
   line-height: 1.5;
   font-family: $font-hei;
   font-size: 16px;
-}
-#app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.clearfix::after
+{
+  content: '';
+  display: block;
+  clear: both;
+}
 #nav {
   padding: 30px;
 
