@@ -42,7 +42,7 @@
           <button>9</button>
           <button>×</button>
           <button class="ok">ok</button>
-          <button>0</button>
+          <button class="zero">0</button>
           <button>.</button>
           <button>%</button>
           <button>÷</button>
@@ -61,26 +61,54 @@ export default {
 @import "~@/assets/style/helper.scss";
 .numberPad{
   .output{
+    @extend %clearfix;
     font-size: 36px;
     font-family: Consolas,monospace;
     padding: 9px 16px;
     text-align: right;
+    box-shadow: inset 0 -5px 6px -5px fade-out( #D47926, 0.6),
+                inset 0 5px 6px -5px fade-out( #D47926, 0.6);
   }
   .buttons{
-    flex-wrap: wrap;
+    @extend %clearfix;
     > button{
       width: 20%;
       height:64px;
       float: left;
+      background: transparent;
+      border: none;
       &.ok{
         height: 64*2px;
         float: right;
+      }
+      $bg:#F6BA72;
+      &:nth-child(15),&:nth-child(19){
+        background: $bg;
+      }
+      &:nth-child(18),&:nth-child(14),&:nth-child(10){
+        background: lighten($bg,4%);
+      }
+      &:nth-child(5),&:nth-child(9),&:nth-child(13),&:nth-child(17){
+        background: lighten($bg,4%*2);
+      }
+      &:nth-child(4),&:nth-child(8),&:nth-child(12),&:nth-child(16){
+        background: lighten($bg,4%*3);
+      }
+      &:nth-child(3),&:nth-child(7),&:nth-child(11){
+        background: lighten($bg,4%*4);
+      }
+      &:nth-child(2),&:nth-child(6){
+        background: lighten($bg,4%*5);
+      }
+      &:nth-child(1)
+      {
+        background: lighten($bg,4%*6);
       }
     }
   }
 }
 .types {
-  background: #fcc869;
+  background: #F2BC64;
   display: flex;
   text-align: center;
   font-size: 24px;
@@ -98,7 +126,7 @@ export default {
       left: 0;
       width: 100%;
       height: 4px;
-      background: #BA9344;
+      background: #CF7421;
     }
   }
 }
@@ -126,7 +154,7 @@ export default {
   > .current {
     display: flex;
     > li {
-      background: #FAEC8B;
+      background:#FFE787;
       $h: 24px;
       height: $h;
       line-height: $h;
