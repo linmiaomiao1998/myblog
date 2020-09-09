@@ -1,3 +1,23 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1F1F3C;
+  overflow: hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
+  animation-fill-mode: both;
+}
+
+*:before, *:after {
+  content: "";
+  display: block;
+}
 .all-wrap {
     animation: bob 7s cubic-bezier(0.5, 0, 0.5, 1) infinite both;
   }
@@ -325,8 +345,8 @@
     transform-origin: left center;
     transform: rotateY(-70deg) rotateZ(10deg);
   }
-  
-  @keyframes bob {
+  /*
+    @keyframes bob {
     0% {
       transform: translateY(0.4rem);
     }
@@ -539,24 +559,4 @@
     8%, 23%, 78% {
       transform: scaleY(0.1);
     }
-  }
-  body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #1F1F3C;
-    overflow: hidden;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: border-box;
-    position: relative;
-    animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
-    animation-fill-mode: both;
-  }
-  
-  *:before, *:after {
-    content: "";
-    display: block;
   }
