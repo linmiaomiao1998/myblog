@@ -9,45 +9,45 @@ import Types from '@/components/Money/Types.vue';
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import {Component, Prop} from 'vue-property-decorator';
+  import Vue from "vue";
+  import { Component, Prop, Watch } from "vue-property-decorator";
 
-@Component
-export default class Types extends Vue {
-   type ='-'//'-'表示支出，'+'表示收入
-      selectType(type:string) {
-      ///type只能是‘-’或者“+”
+  @Component
+  export default class Types extends Vue {
+    @Prop() readonly value!: string;
+    type = "-"; ///type只能是‘-’或者“+”
+    selectType(type: string) {
       if (type !== "-" && type !== "+") {
         throw new Error("type is unknow");
       }
-      this.type = type;
-      }
-}
-
+      this.type=type;
+      this.$emit("update:value", type);
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
-.types {
-  background: #f2bc64;
-  display: flex;
-  text-align: center;
-  font-size: 24px;
-  > li {
-    width: 50%;
-    height: 64px;
+  .types {
+    background: #f2bc64;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    &.selected::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: #cf7421;
+    text-align: center;
+    font-size: 24px;
+    > li {
+      width: 50%;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      &.selected::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: #cf7421;
+      }
     }
   }
-}
 </style>
