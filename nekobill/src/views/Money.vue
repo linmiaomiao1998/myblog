@@ -65,7 +65,6 @@
 </script>
 <style lang="scss">
   .layout-content {
-    border: 3px solid blue;
     display: flex;
     flex-direction: column-reverse;
   }

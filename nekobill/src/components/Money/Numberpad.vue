@@ -86,7 +86,9 @@
     }
     .buttons {
       @extend %clearfix;
+      font-family: $font-hei;
       > button {
+        color:  #A06225;
         width: 20%;
         height: 64px;
         float: left;

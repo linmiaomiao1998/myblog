@@ -17,6 +17,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:lighten(#e2cc92, 21%);
 }
 .clearfix::after
 {
