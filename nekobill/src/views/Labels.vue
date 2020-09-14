@@ -1,12 +1,12 @@
 import Tags from '@/components/Money/Tags.vue';
 <template>
   <Layout>
-    <ol class="tags">
-      <li v-for="tag in tags" :key="tag.id">
+    <div class="tags">
+      <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
         <span>{{ tag.name }}</span>
         <Icon name="right" />
-      </li>
-    </ol>
+      </router-link>
+    </div>
     <div class="createTag-wrapper">
       <button class="createTag" @click="createTag">新建标签</button>
     </div>
@@ -40,7 +40,7 @@ import Tags from '@/components/Money/Tags.vue';
     background: lighten(#f6ba72, 20%);
     font-size: 16px;
     padding-left: 16px;
-    > li {
+    > .tag {
       display: flex;
       align-items: center;
       justify-content: space-between;
