@@ -13,7 +13,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .createTag {
+  .button {
     background: darken(#ffe787, 10%);
     color: whitesmoke;
     border: none;

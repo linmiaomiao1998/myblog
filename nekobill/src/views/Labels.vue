@@ -17,8 +17,11 @@ import Tags from '@/components/Money/Tags.vue';
   import Vue from "vue";
   import { Component } from "vue-property-decorator";
   import { tagListmodel } from "@/models/tagListModel";
+  import Button from '@/components/Button.vue';
   tagListmodel.fetch();
-  @Component
+  @Component({
+    components:{Button}
+  })
   export default class Labels extends Vue {
     tags = tagListmodel.data;
     createTag() {
