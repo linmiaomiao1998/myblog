@@ -11,4 +11,4 @@ const recordListmodel = {
     }
 
 }
-export {recordListmodel}
+export default recordListmodel
