@@ -59,11 +59,11 @@
       this.record.amount = parseFloat(value);
     }
     saveRecord(){
-      recordListmodel.create(this.record)
+      recordListmodel.create(this.record);
     }
     @Watch('recordList')
     onRecordListChange(){
-    recordListmodel.save ();
+    recordListmodel.save();
     }
   }
 </script>

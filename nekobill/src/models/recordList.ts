@@ -1,4 +1,4 @@
-import clone from '../lib/clone';
+import clone from '@/lib/clone.ts';
 const localStorageKeyName = 'recordList'
 const recordListmodel = {
     data:[] as RecordItem[],
@@ -9,7 +9,7 @@ const recordListmodel = {
     },
     fetch() {
         this.data=JSON.parse(window.localStorage.getItem('localStorageKeyName') || '[]') as RecordItem[];
-        return  this.data
+        return  this.data;
     },
     save() {
         window.localStorage.setItem(localStorageKeyName,
