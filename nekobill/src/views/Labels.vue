@@ -17,7 +17,6 @@ import Tags from '@/components/Money/Tags.vue';
 <script lang="ts">
   import Vue from "vue";
   import { Component } from "vue-property-decorator";
-  import tagListmodel  from "@/models/tagListModel";
   import Button from '@/components/Button.vue';
   @Component({
     components:{Button}

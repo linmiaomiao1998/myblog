@@ -22,7 +22,6 @@
   import Tags from "@/components/Money/Tags.vue";
   import { Component, Watch } from "vue-property-decorator";
   import recordListmodel from '@/models/recordList';
-  import tagListmodel from '@/models/tagListModel';
 
 ///import model from '@/views/model.js';
  const recordList=recordListmodel.fetch()
