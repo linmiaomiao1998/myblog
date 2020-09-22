@@ -5,18 +5,26 @@ import router from './router'
 import store from './store'
 import Nav from '@/components/Nav.vue'
 import tagListmodel from '@/models/tagListModel';
-import Layout from'@/components/Layout.vue'
-import Icon from'@/components/Icons.vue'
+import Layout from '@/components/Layout.vue'
+import Icon from '@/components/Icons.vue'
 
 Vue.config.productionTip = false
 
-Vue.component('Nav',Nav) 
-Vue.component('Layout',Layout)
-Vue.component('Icon',Icon)
+Vue.component('Nav', Nav)
+Vue.component('Layout', Layout)
+Vue.component('Icon', Icon)
 
-window.tagList=tagListmodel.fetch();
+window.tagList = tagListmodel.fetch();
+window.createTag = () => {
+  const message = tagListmodel.create(name);
+  if (message === 'duplicated') {
+    window.alert('标签名重复');
+  } else if (message === 'success') {
+    window.alert('添加成功');
+  }
+}
 new Vue({
-  router:router,
+  router: router,
   store,
   render: h => h(App)
 }).$mount('#app')
