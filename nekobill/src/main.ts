@@ -7,6 +7,7 @@ import Nav from '@/components/Nav.vue'
 import tagListmodel from '@/models/tagListModel';
 import Layout from '@/components/Layout.vue'
 import Icon from '@/components/Icons.vue'
+import recordListmodel from '@/models/recordList';
 
 Vue.config.productionTip = false
 
@@ -14,8 +15,12 @@ Vue.component('Nav', Nav)
 Vue.component('Layout', Layout)
 Vue.component('Icon', Icon)
 
+//record stroe
+window.recordList = recordListmodel.fetch();
+window.createRecord = (record: RecordItem) =>recordListmodel.create(record);
+//tag stroe
 window.tagList = tagListmodel.fetch();
-window.findTag=(id:string)=>{
+window.findTag = (id: string) => {
   return window.tagList.filter((t) => t.id === id)[0];
 }
 window.createTag = (name: string) => {
@@ -27,11 +32,11 @@ window.createTag = (name: string) => {
   }
 }
 window.removeTag = (id: string) => {
- return tagListmodel.remove(id)
+  return tagListmodel.remove(id)
 
 }
-window.updateTag=(id:string,name:string)=>{
- return  tagListmodel.update(id, name);
+window.updateTag = (id: string, name: string) => {
+  return tagListmodel.update(id, name);
 }
 new Vue({
   router: router,

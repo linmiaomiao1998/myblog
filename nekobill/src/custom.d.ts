@@ -19,8 +19,10 @@ type TagListmodel = {
 }
 interface Window {
   tagList: Tag[]
+  recordList: RecordItem[]
   createTag:(name:string)=>void,
   removeTag:(id:string)=>boolean,
-  findTag:(id:string)=>Tag|undefined;
+  findTag:(id:string)=>Tag|undefined,
+  createRecord: (record:RecordItem)=>void
   updateTag:(id:string,name:string)=>'success' | 'not found' | 'duplicated'
 }
