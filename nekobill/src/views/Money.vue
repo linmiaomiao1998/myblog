@@ -9,7 +9,8 @@
                 @update:value="onUpdateNotes"
       />
     </div>
-      <Tags :data-source.sync="tags" @update:value="onUpdateTags" />
+      <Tags/>
+      {{count}} <button @click="add">+1</button>
     </Layout>
   </div>
 </template>
@@ -25,6 +26,7 @@
  
 
 ///import model from '@/views/model.js';
+import recordStore from '../store/recordStore';
 
 
 
@@ -37,19 +39,26 @@
   };
   @Component({
     components: { Numberpad, Types, FormItem, Tags },
+    computed:{
+      count(){
+        return store.count;
+      },
+      recordStore(){
+          return store.recordList;//地址 recordList复制到recordList
+      }
+    }
   })
   export default class Money extends Vue {
-    tags =store.tagList;
-    recordList=store.recordList;
+    add(){
+      store.addCount();
+    }
+  
     record: RecordItem = {
       tags: [],
       notes: "",
       type: "-",
       amount: 0,
     };
-    onUpdateTags(value: string[]) {
-      this.record.tags = value;
-    }
     onUpdateNotes(value: string) {
       this.record.notes = value;
     }

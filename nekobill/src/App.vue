@@ -37,3 +37,14 @@ body {
   }
 }
 </style>
+<script lang="ts">
+import Vue from 'vue'
+import store from './store/index2';
+export default ({
+  data(){
+    return{
+      store:store
+    }
+  }
+})
+</script>

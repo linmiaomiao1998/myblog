@@ -1,7 +1,21 @@
-import recordListmodel from '@/models/recordList';
+import clone from '@/lib/clone.ts'
+const localStorageKeyName = 'recordList'
 
-export default{
-     //record stroe
-  recordList:recordListmodel.fetch(),
-  createRecord : (record: RecordItem) =>recordListmodel.create(record),
-}
+const recordStore= {
+  recordList:[] as RecordItem[],
+  fetchRecords() {
+    this.recordList = JSON.parse(window.localStorage.getItem('localStorageKeyName') || '[]') as RecordItem[];
+    return this.recordList;
+  },
+   saveRecords() {
+    window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.recordList))
+  },
+  createRecord(record: RecordItem){
+    const record2: RecordItem = clone(record);
+    record2.createdAt = new Date();
+    this.recordList&&this.recordList.push(record2);///可调换成this.record?.push(record2)
+    recordStore.saveRecords();
+  }
+};
+recordStore.fetchRecords();
+export default recordStore;
