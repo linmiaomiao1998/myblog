@@ -26,7 +26,7 @@
   // import store from '@/store/index2.ts';
 
   ///import model from '@/views/model.js';
-  import recordStore from "../store/recordStore";
+ 
 
   type RecordItem = {
     tags: string[];
