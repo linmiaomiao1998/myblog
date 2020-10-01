@@ -11,8 +11,6 @@
         />
       </div>
       <Tags />
-      {{count}}
-      <!-- {{count}} <button @click="add">+1</button> -->
       <button @click="$store.commit('increment')"></button>
     </Layout>
   </div>
@@ -26,7 +24,6 @@
   import Tags from "@/components/Money/Tags.vue";
   import { Component } from "vue-property-decorator";
   // import store from '@/store/index2.ts';
-  import oldStore from "@/store/index2.ts";
 
   ///import model from '@/views/model.js';
   import recordStore from "../store/recordStore";
@@ -56,13 +53,15 @@
     // add() {
     //   store.addCount();
     // }
-    recordList = oldStore.recordList;
     record: RecordItem = {
       tags: [],
       notes: "",
       type: "-",
       amount: 0,
     };
+    create(){
+      this.$store.commit('fetchRecords')
+    }
     onUpdateNotes(value: string) {
       this.record.notes = value;
     }
@@ -74,7 +73,7 @@
     }
     saveRecord() {
       // store.createRecord(this.record);
-        oldStore.createRecord(this.record);
+      this.$store.commit('createRecord',this.record);
     }
   }
 </script>

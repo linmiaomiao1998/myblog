@@ -8,7 +8,9 @@
         v-for="tag in tagList"
         :key="tag.id"
         :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
-        @click="toggle(tag)">{{tag.name}}
+        @click="toggle(tag)"
+      >
+        {{ tag.name }}
       </li>
     </ul>
   </div>
@@ -17,11 +19,17 @@
 <script lang="ts">
   import Vue from "vue";
   import { Component, Prop } from "vue-property-decorator";
-import store from '@/store/index2';
+  import store from "@/store/index2";
 
-  @Component
+  @Component({
+    computed: {
+      tagList() {
+        // return store.fetchTags();
+        return [];
+      },
+    },
+  })
   export default class Tags extends Vue {
-    tagList=store.fetchTags();
     selectedTags: string[] = [];
     toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
@@ -30,15 +38,14 @@ import store from '@/store/index2';
       } else {
         this.selectedTags.push(tag);
       }
-      this.$emit('update:value', this.selectedTags);
+      this.$emit("update:value", this.selectedTags);
     }
     creat() {
       const name = window.prompt("请输入标签名");
       if (!name) {
-       return window.alert("标签名不能为空");
-        
-      } 
-      store.createTag(name)
+        return window.alert("标签名不能为空");
+      }
+      // store.createTag(name);
     }
   }
 </script>
