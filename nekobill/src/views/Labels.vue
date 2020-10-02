@@ -22,29 +22,18 @@ import Tags from '@/components/Money/Tags.vue';
   import Vue from "vue";
   import { Component } from "vue-property-decorator";
   import Button from "@/components/Button.vue";
-  
 
   @Component({
     components: { Button },
-    computed:{
-      tags(){
-        return this.$store.state.tagList;
-      }
-    }
   })
   export default class Labels extends Vue {
-    beforeCreate(){
-      this.$store.commit('fetchTags');
-    }
     // tags = store.tagList;
-    createTag() {
-       const name = window.prompt("请输入标签名");
-      if (!name) {
-        return window.alert("标签名不能为空");
-      }
-      this.$store.commit('createTag',name);
-      }
-    
+    get tags() {
+      return this.$store.state.tagList;
+    }
+    beforeCreate() {
+      this.$store.commit("fetchTags");
+    }
   }
 </script>
 

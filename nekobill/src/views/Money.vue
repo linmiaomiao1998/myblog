@@ -26,7 +26,6 @@
   // import store from '@/store/index2.ts';
 
   ///import model from '@/views/model.js';
- 
 
   type RecordItem = {
     tags: string[];
@@ -38,29 +37,32 @@
   @Component({
     components: { Numberpad, Types, FormItem, Tags },
     computed: {
-       recordList() {
+      recordList() {
         return this.$store.state.count;
-      }
-    }
-      // count() {
-      //   return store.count;
-      // },
-      // recordStore() {
-      //   return store.recordList; //地址 recordList复制到recordList
-      // },
+      },
+    },
+    // count() {
+    //   return store.count;
+    // },
+    // recordStore() {
+    //   return store.recordList; //地址 recordList复制到recordList
+    // },
   })
   export default class Money extends Vue {
     // add() {
     //   store.addCount();
     // }
+    get recordList() {
+      return this.$store.state.recordList;
+    }
     record: RecordItem = {
       tags: [],
       notes: "",
       type: "-",
       amount: 0,
     };
-    create(){
-      this.$store.commit('fetchRecords')
+    created() {
+      this.$store.commit("fetchRecords");
     }
     onUpdateNotes(value: string) {
       this.record.notes = value;
@@ -73,7 +75,7 @@
     }
     saveRecord() {
       // store.createRecord(this.record);
-      this.$store.commit('createRecord',this.record);
+      this.$store.commit("createRecord", this.record);
     }
   }
 </script>
