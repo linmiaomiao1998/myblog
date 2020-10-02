@@ -24,6 +24,7 @@
   import FormItem from "@/components/Money/FormItem.vue";
   import { Component } from "vue-property-decorator";
   import Button from "@/components/Button.vue";
+import store from '../store/index';
   
 
   @Component({
@@ -36,6 +37,7 @@
     created() {
       // this.tag = store.findTag(this.$route.params.id);
        const id = this.$route.params.id;
+       this.$store.commit('fetchTags');
       this.$store.commit('setCurrentTag', id);
       if (!this.tag) {
         this.$router.replace("/404");
@@ -43,11 +45,13 @@
     }
     updateTag(name: string) {
       if (this.tag) {
+        this.$store.commit('updateTag',{id:this.tag.id,name})
           // tagList=store.fetchTags();
       }
     }
     remove() {
       if (this.tag) {
+        this.$store.commit('removeTag',this.tag.id)
       //   if (store.removeTag(this.tag.id)) {
       //     this.$router.back();
       //   } else {
