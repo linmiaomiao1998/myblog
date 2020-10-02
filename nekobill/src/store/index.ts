@@ -4,13 +4,22 @@ import clone from '@/lib/clone.ts'
 import createId from '../lib/createid';
 
 Vue.use(Vuex)// 把 store 绑到 Vue.prototype.$store = store
+type RootState = {
+  recordList: RecordItem[],
+  tagList: Tag[],
+  currentTag?: Tag
+}
 
 const store = new Vuex.Store({
   state: { // data
-    recordList: [] as RecordItem[],
-    tagList:[] as Tag[],
-  },
+    recordList: [],
+    tagList: [],
+    currentTag: undefined
+  } as RootState,
   mutations: { // methods
+    setCurrentTag(state, id: string) {
+      state.currentTag = state.tagList.filter(t => t.id === id)[0];
+    },
     fetchRecords(state) {
       state.recordList = JSON.parse(window.localStorage.getItem('localStorageKeyName') || '[]') as RecordItem[];
     },
