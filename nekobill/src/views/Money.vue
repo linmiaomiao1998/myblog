@@ -2,7 +2,10 @@
   <div>
     <Layout class-prefix="layout">
       <Numberpad @update:value="onUpdateAmount" @submit="saveRecord" />
-      <Types :value.sync="record.type" />
+      
+      <Tabs :data-source="recordTypeList"
+            :value.sync="record.type"
+      />
       <div class="notes">
         <FormItem
           field-name="备注"
@@ -26,6 +29,7 @@
   // import store from '@/store/index2.ts';
 
   ///import model from '@/views/model.js';
+import recordTypeList from '@/constants/recordTypeList.ts';
 
   type RecordItem = {
     tags: string[];
@@ -55,6 +59,7 @@
     get recordList() {
       return this.$store.state.recordList;
     }
+    recordTypeList=recordTypeList;
     record: RecordItem = {
       tags: [],
       notes: "",
@@ -62,7 +67,7 @@
       amount: 0,
     };
     created() {
-      this.$store.commit("fetchRecords");
+      this.$store.commit('fetchRecords');
     }
     onUpdateNotes(value: string) {
       this.record.notes = value;
@@ -75,7 +80,7 @@
     }
     saveRecord() {
       // store.createRecord(this.record);
-      this.$store.commit("createRecord", this.record);
+      this.$store.commit('createRecord', this.record);
     }
   }
 </script>

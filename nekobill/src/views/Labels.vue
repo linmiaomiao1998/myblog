@@ -1,4 +1,3 @@
-
 <template>
   <Layout>
     <div class="createTag-wrapper">
@@ -19,22 +18,18 @@
 </template>
 
 <script lang="ts">
-import Tags from '@/components/Money/Tags.vue';
+  import Tags from "@/components/Money/Tags.vue";
   import Vue from "vue";
   import { Component } from "vue-property-decorator";
   import Button from "@/components/Button.vue";
   import { mixins } from "vue-class-component";
   import TagHelper from "@/mixins/TagHelper";
+  import { mixin } from "vue/types/umd";
 
   @Component({
     components: { Button },
-     computed: {
-      tags() {
-        return this.$store.state.tagList;
-      },
-    }
   })
-  export default class Labels extends Vue {
+  export default class Labels extends mixins(TagHelper) {
     // tags = store.tagList;
     get tags() {
       return this.$store.state.tagList;
@@ -64,14 +59,17 @@ import Tags from '@/components/Money/Tags.vue';
     }
   }
   .createTag {
+
     background: darken(#ffe787, 10%);
     color: whitesmoke;
     border: none;
     border-radius: 4px;
     height: 40px;
     padding: 0 16px;
+    margin:0 auto;
 
     &-wrapper {
+      text-align: center;
       padding: 16px;
       padding-left: 16px;
     }
