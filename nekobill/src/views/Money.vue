@@ -2,10 +2,8 @@
   <div>
     <Layout class-prefix="layout">
       <Numberpad @update:value="onUpdateAmount" @submit="saveRecord" />
-      
-      <Tabs :data-source="recordTypeList"
-            :value.sync="record.type"
-      />
+      <Tabs :data-source="recordTypeList" 
+            :value.sync="record.type" />
       <div class="notes">
         <FormItem
           field-name="备注"
@@ -26,20 +24,18 @@
   import FormItem from "@/components/Money/FormItem.vue";
   import Tags from "@/components/Money/Tags.vue";
   import { Component } from "vue-property-decorator";
-  // import store from '@/store/index2.ts';
+  import Tabs from "@/components/Tabs.vue";
+  import recordTypeList from "@/constants/recordTypeList.ts";
 
-  ///import model from '@/views/model.js';
-import recordTypeList from '@/constants/recordTypeList.ts';
-
-  type RecordItem = {
-    tags: string[];
-    notes: string;
-    type: string;
-    amount: number; //数据类型
-    createdAt?: Date; //类、构造函数
-  };
+  // type RecordItem = {
+  //   tags: string[];
+  //   notes: string;
+  //   type: string;
+  //   amount: number; //数据类型
+  //   createdAt?: Date; //类、构造函数
+  // };
   @Component({
-    components: { Numberpad, Types, FormItem, Tags },
+    components: {Tabs, Numberpad, Types, FormItem, Tags},
     computed: {
       recordList() {
         return this.$store.state.count;
@@ -59,7 +55,7 @@ import recordTypeList from '@/constants/recordTypeList.ts';
     get recordList() {
       return this.$store.state.recordList;
     }
-    recordTypeList=recordTypeList;
+    recordTypeList = recordTypeList;
     record: RecordItem = {
       tags: [],
       notes: "",
@@ -67,7 +63,7 @@ import recordTypeList from '@/constants/recordTypeList.ts';
       amount: 0,
     };
     created() {
-      this.$store.commit('fetchRecords');
+      this.$store.commit("fetchRecords");
     }
     onUpdateNotes(value: string) {
       this.record.notes = value;
@@ -80,7 +76,7 @@ import recordTypeList from '@/constants/recordTypeList.ts';
     }
     saveRecord() {
       // store.createRecord(this.record);
-      this.$store.commit('createRecord', this.record);
+      this.$store.commit("createRecord", this.record);
     }
   }
 </script>
