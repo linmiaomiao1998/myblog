@@ -30,8 +30,9 @@
   import Tabs from "../components/Tabs.vue";
   import intervalList from "@/constants/intervalList.ts";
   import recordTypeList from "@/constants/recordTypeList.ts";
-  import createId from "../lib/createid";
+  import createId from '../lib/createid';
   import dayjs from "dayjs";
+import clone from '../lib/clone';
   @Component({
     components: { Tabs },
   })
@@ -60,14 +61,19 @@
     }
     get groupedList() {
       const { recordList } = this;
-      type HashTableValue = { title: string; items: RecordItem[] };
-      const hashTable: { [key: string]: HashTableValue } = {};
-      for (let i = 0; i < recordList.length; i++) {
-        const [date, time] = recordList[i].createdAt!.split("T");
-        hashTable[date] = hashTable[date] || { title: date, items: [] };
-        hashTable[date].items.push(recordList[i]);
+      if(recordList.length===0){return [];}
+      const newList = clone(recordList).sort((a,b)=>dayjs(b.createdAt).valueOf()-dayjs(a.createdAt).valueOf());
+      const result=[{title:dayjs(recordList[0].createdAt).format('YYYY-MM-DD'),items:recordList[0]}];
+      for(let i=1;i<newList.length;i++){
+        const current =newList[i];
+        const last=result[result.length-1];
+         if (dayjs(last.title).isSame(dayjs(current.createdAt), 'day')) {
+          [last.items].push(current);
+        } else {
+          result.push({title:dayjs(current.createdAt).format('YYYY-MM-DD'),items:[current]});
+        }
       }
-      return hashTable;
+      return result;
     }
     beforeCreate() {
       this.$store.commit("fetchRecords");
