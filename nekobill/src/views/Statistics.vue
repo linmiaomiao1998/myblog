@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <Tabs classPrefix="type" :data-source="typeList" :value.sync="type" />
-    <Tabs
+    <!-- <Tabs
       classPrefix="interval"
       :data-source="intervalList"
       :value.sync="interval"
-    />
+    /> -->
 
     <ol>
       <li v-for="(group, index) in groupedList" :key="index">
@@ -62,17 +62,27 @@ import clone from '../lib/clone';
     get groupedList() {
       const { recordList } = this;
       if(recordList.length===0){return [];}
-      const newList = clone(recordList).sort((a,b)=>dayjs(b.createdAt).valueOf()-dayjs(a.createdAt).valueOf());
-      const result=[{title:dayjs(recordList[0].createdAt).format('YYYY-MM-DD'),items:recordList[0]}];
-      for(let i=1;i<newList.length;i++){
-        const current =newList[i];
-        const last=result[result.length-1];
-         if (dayjs(last.title).isSame(dayjs(current.createdAt), 'day')) {
-          [last.items].push(current);
+         const newList = clone(recordList)
+        .filter(r => r.type === this.type)
+        .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+      type Result = { title: string, total?: number, items: RecordItem[] }[]
+      const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'),items: [newList[0]]}];
+      for (let i = 1; i < newList.length; i++) {
+        const current = newList[i];
+        const last = result[result.length - 1];
+        if (dayjs(last.title).isSame(dayjs(current.createdAt), 'day')) {
+          last.items.push(current);
         } else {
-          result.push({title:dayjs(current.createdAt).format('YYYY-MM-DD'),items:[current]});
+          result.push({title: dayjs(current.createdAt).format('YYYY-MM-DD'), items: [current]});
         }
       }
+      result.map(group => {
+        group.total = group.items.reduce((sum, item) => {
+          console.log(sum);
+          console.log(item);
+          return sum + item.amount;
+        }, 0);
+      });
       return result;
     }
     beforeCreate() {
@@ -88,11 +98,11 @@ import clone from '../lib/clone';
 <style scoped lang="scss">
   ::v-deep {
     .type-tabs-item {
-      background: #cf7421;
-      color: #f2bc64;
+      background:#f2bc64;
+      color:  #cf7421;
       &.selected {
-        background-color: #f2bc64;
-        color: #cf7421;
+        background-color:  #cf7421;
+        color: #f2bc64;
         &::after {
           display: none;
         }
