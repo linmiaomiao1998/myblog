@@ -7,7 +7,7 @@
       :value.sync="interval"
     /> -->
 
-    <ol>
+    <ol v-if="groupedList.length>0"> 
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">
           {{ beautify(group.title) }} <span>￥{{ group.total }}</span>
@@ -16,11 +16,15 @@
           <li v-for="item in group.items" :key="item.id" class="record">
             <span>{{ tagString(item.tags) }}</span>
             <span class="notes">{{ item.notes }}</span>
-            <span>￥{{ item.amount }} </span>
+            <span>{{item.type}}￥{{ item.amount }} </span>
           </li>
         </ol>
       </li>
     </ol>
+    <div v-else class="noReult">
+      <image src="..\assets\没有记录.svg"></image>
+      目前没有相关记录
+    </div>
   </Layout>
 </template>
 
@@ -33,6 +37,7 @@
   import createId from '../lib/createid';
   import dayjs from "dayjs";
 import clone from '../lib/clone';
+
   @Component({
     components: { Tabs },
   })
@@ -54,17 +59,20 @@ import clone from '../lib/clone';
       }
     }
     tagString(tags: Tag[]) {
-      return tags.length === 0 ? "无" : tags.join(",");
+      return tags.length === 0 ? "无" : tags.map(t=>t.name).join("，");
     }
     get recordList() {
       return (this.$store.state as RootState).recordList;
     }
+    
     get groupedList() {
       const { recordList } = this;
       if(recordList.length===0){return [];}
+      
          const newList = clone(recordList)
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+        if(newList.length===0){return [] as Result[];}
       type Result = { title: string, total?: number, items: RecordItem[] }[]
       const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'),items: [newList[0]]}];
       for (let i = 1; i < newList.length; i++) {
@@ -96,6 +104,14 @@ import clone from '../lib/clone';
 </script>
 
 <style scoped lang="scss">
+.image{
+  height: 200px;
+}
+.noReult{
+  padding:16px;
+  text-align:center;
+  height: 100%;
+}
   ::v-deep {
     .type-tabs-item {
       background:#f2bc64;
