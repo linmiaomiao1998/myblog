@@ -17,7 +17,7 @@
         <button @click="ok" class="ok">ok</button>
         <button @click="inputContent">0</button>
         <button @click="inputContent">.</button>
-        <button>%</button>
+        <button @click="ok" ></button>
       </div>
     </div>
   </div>
