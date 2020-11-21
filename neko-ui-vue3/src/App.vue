@@ -2,15 +2,16 @@
  <router-view />
 </template>
 
-<script>
+<script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
-import neko from './components/neko.vue';
+import { ref, provide } from 'vue';
 
 
 export default {
   name: 'App',
-  components: {
-    neko
+  setup(){
+    const asideVisible = ref(true)
+    provide('xxx',asideVisible)
   }
 }
 
