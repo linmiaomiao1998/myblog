@@ -11,7 +11,7 @@ export default {
   name: 'App',
   setup(){
     const asideVisible = ref(true)
-    provide('xxx',asideVisible)
+    provide('asideVisible',asideVisible)
   }
 }
 
