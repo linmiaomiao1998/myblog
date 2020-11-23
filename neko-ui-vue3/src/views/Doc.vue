@@ -72,7 +72,7 @@
   }
   aside {
     padding: 16px;
-    background: lightblue;
+    background: white;
     width: 150px;
     position: fixed;
     top: 0;
