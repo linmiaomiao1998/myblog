@@ -63,11 +63,12 @@
     display: flex;
     > aside {
       flex-shrink: 0;
+      background: lightblue;
     }
     > main {
       flex-grow: 1;
       padding: 16px;
-      background: lightgreen;
+      background: white;
     }
   }
   aside {
