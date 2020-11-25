@@ -172,7 +172,8 @@
     &.neko-other-gather {
       transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
       &:hover {
-        box-shadow: 0 0 40px 40px $red inset;
+        box-shadow: 0 0 40px 40px $blue inset;
+        color: white;
       }
     }
     &.neko-other-spread {
@@ -183,6 +184,7 @@
 
       &:hover {
         box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
+        color: $blue;
       }
     }
     &.neko-other-roll {

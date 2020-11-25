@@ -1,0 +1,22 @@
+<template>
+  <div class="dialog-overlay"></div>
+  <div class="dialog-wrapper">
+    <header>标题</header>
+    <main>
+      <p>内容</p>
+    </main>
+    <footer>
+    <Button >OK</Button>
+    <Button >Cancel</Button>
+    </footer>
+  </div>
+</template>
+
+<script>
+import Button from "../lib/Button.vue"
+  export default {
+      components:{Button}
+  };
+</script>
+
+<style></style>
