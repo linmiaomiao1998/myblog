@@ -1,10 +1,8 @@
 <template>
   <div>
     <Switch v-model:value="bool"  />
-    
   </div>
 
-  <div>{{value}}</div>
 </template>
 
 <script lang="ts">
