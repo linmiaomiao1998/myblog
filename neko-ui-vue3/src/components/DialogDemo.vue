@@ -10,13 +10,15 @@
     <div>标题</div>
     </template>
   </Dialog>
+  <h2>示例2</h2>
+  <Button @click="showDialog">show</Button>
 </template>
 
 <script lang="ts">
   import Dialog from "../lib/Dialog.vue";
-  import { ref } from "vue";
+  import { ref, h } from "vue";
   import Button from "../lib/Button.vue";
-
+  import {openDialog} from '../lib/openDialog';
   export default {
     components: {
       Dialog,
@@ -27,7 +29,19 @@
       const toggle = () => {
         x.value = !x.value;
       };
-      return { x, toggle };
+      const showDialog=()=>{
+        openDialog({
+          title:h('strong',{},'标题'),
+          content:'你好',
+          ok(){
+            console.log('ok')
+          },
+          cancel(){
+             console.log('cancel')
+          }
+        });
+      }
+      return { x, toggle ,showDialog};
     },
   };
 </script>
