@@ -26,7 +26,7 @@ const store = new Vuex.Store({
       if (idList.indexOf(id) >= 0) {
         const names = state.tagList.map(item => item.name);
         if (names.indexOf(name) >= 0) {
-          window.alert('标签名重复了')
+          window.alert('标签名重复了');
         } else {
           const tag = state.tagList.filter(item => item.id === id)[0];
           tag.name = name;
@@ -74,15 +74,16 @@ const store = new Vuex.Store({
         store.commit('createTag','食');
         store.commit('createTag','住');
         store.commit('createTag','行');
+        store.commit('createTag','工资');
       }
     },
     createTag(state, name: string) {
-      state.createRecordError=null;
+      state.createTagError=null;
       const names = state.tagList.map(item => item.name);//data里面每一项的name收集起来产生一个新的names
       if (names.indexOf(name) >= 0) {
-        window.alert('标签名重复');
-        state.createTagError=new Error('标签名重复了')
-        return 'duplicated';
+        state.createTagError=new Error('tag name duplicated');
+        return ;
+
       }
       const id = createId().toString();
       state.tagList.push({ id, name: name });
